@@ -29,4 +29,15 @@ const jwtVerification = (req, res, next) => {
     });
   };
 
-module.exports = { jwtVerification, verifyAuthAndToken }
+  const verifyTokenAndAdmin = (req, res, next) => {
+    jwtVerification(req, res, () => {
+        
+      if (req.user.isAdmin) {
+        next();
+      } else {
+        res.status(403).json("Not allowed!");
+      }
+    });
+  };
+
+module.exports = { jwtVerification, verifyAuthAndToken, verifyTokenAndAdmin }
