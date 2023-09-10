@@ -24,7 +24,7 @@ app.use("/api/users", userRoute);
 
 
 app.listen(port, () => {
-  console.log("Server is running");
+  console.log("Server running");
   
 })
 
